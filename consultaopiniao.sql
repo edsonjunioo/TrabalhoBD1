@@ -95,6 +95,16 @@ CREATE TABLE unidade_acadêmica(
 
 ALTER TABLE unidade_acadêmica OWNER TO postgres;
 
+--TABELA UNIDADE ADMINISTRATIVA
+CREATE TABLE unidade_administrativa(
+	sigla character(5) NOT NULL,
+	nome character varying(150) NOT NULL
+
+);
+
+ALTER TABLE unidade_administrativa OWNER TO postgres;
+
+
 
 
 --TABELA CURSO	
@@ -154,14 +164,42 @@ ALTER TABLE formulario OWNER TO postgres;
 --pessoa
 INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Paula', '32112354397', '1995-02-20', 'paula@ufu.com.br', 'paula@email.com.br');
 
+--aluno
+INSERT INTO aluno (nro_matricula, curso) VALUES ('32112BSI397', 'Sistemas de informação');
+
+--tecnico
+INSERT INTO tecnico (siape, un_adm) VALUES ('3211TUFU397', 'Sistemas de informação');
 
 --professor
-INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648186', 'UFU', 'Dedicação exclusiva');
+INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648PUFU886', 'UFU', 'Dedicação exclusiva');
 
+--terceirizado
+INSERT INTO terceirizado (empresa, setor) VALUES ('tanus', 'limpeza');
+
+--unidade academica
+INSERT INTO curso (sigla, nome, area) VALUES ('FACOM', 'Faculdade de computação', 'Exatas');
+
+
+--unidade administrativa
+INSERT INTO curso (sigla, nome) VALUES ('UNSAN', 'Unidade Santa Mônica');
 
 
 --curso
 INSERT INTO curso (sigla, nome, un_acad) VALUES ('BSI', 'Sistemas de informação', 'UFU');
+
+
+--questao
+INSERT INTO questao (questao, id, resposta) VALUES ('Esta satisfeito com seu trabalho', '1', 'Sim ou Não');
+
+
+--resposta
+INSERT INTO resposta (resp, id_resp) VALUES ('Sim', '1');
+
+
+--formulario
+INSERT INTO formulario (id_form, nome, criador, data_inicial, data_final) VALUES ('1', 'satisfacao', 'Paula', '2016-12-02', '2016-12-06');
+
+
 
 
 
