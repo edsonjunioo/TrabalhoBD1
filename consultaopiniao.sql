@@ -101,7 +101,7 @@ ALTER TABLE unidade_acadêmica OWNER TO postgres;
 CREATE TABLE curso(
 	sigla character(5) NOT NULL,
 	nome character varying(150) NOT NULL,
-	un_acad character(5) NOT NULL,
+	un_acad character(5) NOT NULL
 );
 
 ALTER TABLE curso OWNER TO postgres;
@@ -142,6 +142,26 @@ CREATE TABLE formulario(
 );
 
 ALTER TABLE formulario OWNER TO postgres;
+
+
+
+
+
+
+
+--POVOAMENTO DO BANCO
+
+--pessoa
+INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Paula', '32112354397', '1995-02-20', 'paula@ufu.com.br', 'paula@email.com.br');
+
+
+--professor
+INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648186', 'UFU', 'Dedicação exclusiva');
+
+
+
+--curso
+INSERT INTO curso (sigla, nome, un_acad) VALUES ('BSI', 'Sistemas de informação', 'UFU');
 
 
 
