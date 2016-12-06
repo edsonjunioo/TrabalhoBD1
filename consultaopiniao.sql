@@ -68,7 +68,7 @@ ALTER TABLE aluno OWNER TO postgres;
 --TABELA TECNICO
 CREATE TABLE tecnico(
 	siape character(11) NOT NULL,
-	un_adm character varying(20) NOT NULL
+	un_adm character(5) NOT NULL
 );
 
 ALTER TABLE tecnico OWNER TO postgres;
@@ -163,33 +163,61 @@ ALTER TABLE formulario OWNER TO postgres;
 
 --pessoa
 INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Paula', '32112354397', '1995-02-20', 'paula@ufu.com.br', 'paula@email.com.br');
+INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Joao', '32112354836', '1990-04-20', 'joao@ufu.com.br', 'joao@email.com.br');
+INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Pedro', '32118989397', '1985-09-06', 'pedro@ufu.com.br', 'pedrp@email.com.br');
+INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Roberta', '32163154397', '1989-10-20', 'roberta@ufu.com.br', 'roberta@email.com.br');
+
+
+
 
 --aluno
 INSERT INTO aluno (nro_matricula, curso) VALUES ('32112BSI397', 'Sistemas de informação');
+INSERT INTO aluno (nro_matricula, curso) VALUES ('32112BSI399', 'Sistemas de informação');
+INSERT INTO aluno (nro_matricula, curso) VALUES ('32112DIR397', 'Direito');
+INSERT INTO aluno (nro_matricula, curso) VALUES ('32112CCI397', 'Ciencia da computação');
 
 --tecnico
-INSERT INTO tecnico (siape, un_adm) VALUES ('3211TUFU397', 'Sistemas de informação');
+INSERT INTO tecnico (siape, un_adm) VALUES ('3211TUFU397', 'UNSAN');
+INSERT INTO tecnico (siape, un_adm) VALUES ('3212TUFU397', 'UNSAN');
+INSERT INTO tecnico (siape, un_adm) VALUES ('3213TUFU397', 'UNSAN');
+INSERT INTO tecnico (siape, un_adm) VALUES ('3214TUFU397', 'UNSAN');
 
 --professor
 INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648PUFU886', 'UFU', 'Dedicação exclusiva');
+INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648PUFU887', 'UFU', '20hs');
+INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648PUFU888', 'UFU', '40hs');
+INSERT INTO professor (siape, un_academica, reg_trabalho) VALUES ('4648PUFU889', 'UFU', '40hs');
 
 --terceirizado
 INSERT INTO terceirizado (empresa, setor) VALUES ('tanus', 'limpeza');
+INSERT INTO terceirizado (empresa, setor) VALUES ('core', 'segurança');
+INSERT INTO terceirizado (empresa, setor) VALUES ('nation', 'reparos');
 
 --unidade academica
-INSERT INTO curso (sigla, nome, area) VALUES ('FACOM', 'Faculdade de computação', 'Exatas');
+INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FACOM', 'Faculdade de computação', 'Exatas');
+INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FAMAT', 'Faculdade de matematica', 'Exatas');
+INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FAMED', 'Faculdade de medicina', 'Biologicas');
+INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FAGEN', 'Faculdade de gestão em negocios', 'Exatas');
 
 
 --unidade administrativa
-INSERT INTO curso (sigla, nome) VALUES ('UNSAN', 'Unidade Santa Mônica');
+INSERT INTO unidade_administrativa (sigla, nome) VALUES ('UNSAN', 'Unidade Santa Mônica');
+INSERT INTO unidade_administrativa (sigla, nome) VALUES ('EDUCA', 'Unidade Educação fisica');
+INSERT INTO unidade_administrativa (sigla, nome) VALUES ('UNUMU', 'Unidade Umuarama');
 
 
 --curso
 INSERT INTO curso (sigla, nome, un_acad) VALUES ('BSI', 'Sistemas de informação', 'UFU');
+INSERT INTO curso (sigla, nome, un_acad) VALUES ('CC', 'Ciencias da Computação', 'UFU');
+INSERT INTO curso (sigla, nome, un_acad) VALUES ('ADM', 'Administração', 'UFU');
+
 
 
 --questao
-INSERT INTO questao (questao, id, resposta) VALUES ('Esta satisfeito com seu trabalho', '1', 'Sim ou Não');
+INSERT INTO questao (descricao, id, resposta) VALUES ('Esta satisfeito com seu trabalho', '1', 'Sim ou Não');
+INSERT INTO questao (descricao, id, resposta) VALUES ('Indicaria a instituição', '1', 'Sim ou Não');
+INSERT INTO questao (descricao, id, resposta) VALUES ('Satisfeito com a gestão', '1', 'Sim ou Não');
+
 
 
 --resposta
@@ -198,8 +226,25 @@ INSERT INTO resposta (resp, id_resp) VALUES ('Sim', '1');
 
 --formulario
 INSERT INTO formulario (id_form, nome, criador, data_inicial, data_final) VALUES ('1', 'satisfacao', 'Paula', '2016-12-02', '2016-12-06');
+INSERT INTO formulario (id_form, nome, criador, data_inicial, data_final) VALUES ('1', 'satisfacao', 'Joao', '2016-12-02', '2016-12-06');
+INSERT INTO formulario (id_form, nome, criador, data_inicial, data_final) VALUES ('1', 'satisfacao', 'Pedro', '2016-12-02', '2016-12-06');
 
 
 
 
+--chave primaria pessoa
+ALTER TABLE ONLY pessoa
+    ADD CONSTRAINT pkpessoa PRIMARY KEY (cpf);
+
+
+--chave primaria professor   
+ALTER TABLE ONLY professor
+    ADD CONSTRAINT pkprofessor PRIMARY KEY (siape);
+
+--chave primaria 
+ALTER TABLE ONLY aluno
+    ADD CONSTRAINT pkaluno PRIMARY KEY (nro_matricula);    
+
+    
+    
 
