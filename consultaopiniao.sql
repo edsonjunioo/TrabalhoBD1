@@ -1,4 +1,12 @@
 ﻿--Trabalho Final BD1
+
+
+--Grupo DE-R
+--Nome: Edson Junio Sousa Sobrinho
+--Nome: Marco Tulio
+--Nome: Luiz Eduardo
+
+
 --
 -- PostgreSQL database dump
 --
@@ -67,7 +75,7 @@ ALTER TABLE pessoa OWNER TO postgres;
 
 --TABELA PROFESSOR
 CREATE TABLE professor (
-        nome character varying(250) NOT NULL,
+        nome_p character varying(250) NOT NULL,
 	siape character(11) NOT NULL,
 	un_academica character varying(20) NOT NULL,
 	reg_trabalho character varying(40) NOT NULL
@@ -78,7 +86,7 @@ ALTER TABLE professor OWNER TO postgres;
 
 --TABELA ALUNO
 CREATE TABLE aluno(
-	nome character varying(250) NOT NULL,
+	nome_a character varying(250) NOT NULL,
 	nro_matricula character(11) NOT NULL,
 	curso character varying(50) NOT NULL
 );
@@ -89,7 +97,7 @@ ALTER TABLE aluno OWNER TO postgres;
 
 --TABELA TECNICO
 CREATE TABLE tecnico(
-	nome character varying(250) NOT NULL,
+	nome_t character varying(250) NOT NULL,
 	siape character(11) NOT NULL,
 	un_adm character(5) NOT NULL
 );
@@ -100,7 +108,7 @@ ALTER TABLE tecnico OWNER TO postgres;
 
 --TABELA TERCEIRIZADO
 CREATE TABLE terceirizado(
-	nome character varying(250) NOT NULL,
+	nome_te character varying(250) NOT NULL,
 	empresa character varying(20) NOT NULL,
 	setor character varying(20) NOT NULL
 );
@@ -133,8 +141,8 @@ ALTER TABLE unidade_administrativa OWNER TO postgres;
 
 --TABELA CURSO	
 CREATE TABLE curso(
-	sigla character(5) NOT NULL,
-	nome character varying(150) NOT NULL,
+	sigla_c character(5) NOT NULL,
+	nome_c character varying(150) NOT NULL,
 	un_acad character(5) NOT NULL
 );
 
@@ -224,32 +232,32 @@ INSERT INTO pessoa (nome, cpf, data_nasc, email_inst, email_sec) VALUES ('Marta'
 
 
 --aluno
-INSERT INTO aluno (nome, nro_matricula, curso) VALUES ('Paula', '32112BSI397', 'Sistemas de informação');
-INSERT INTO aluno (nome, nro_matricula, curso) VALUES ('Joao', '32112BSI399', 'Sistemas de informação');
-INSERT INTO aluno (nome, nro_matricula, curso) VALUES ('Pedro', '32112DIR397', 'Direito');
-INSERT INTO aluno (nome, nro_matricula, curso) VALUES ('Roberta', '32112CCI397', 'Ciencia da computação');
-INSERT INTO aluno (nome, nro_matricula, curso) VALUES ('Juliana', '32112ADM397', 'Administração');
+INSERT INTO aluno (nome_a, nro_matricula, curso) VALUES ('Paula', '32112BSI397', 'Sistemas de informação');
+INSERT INTO aluno (nome_a, nro_matricula, curso) VALUES ('Joao', '32112BSI399', 'Sistemas de informação');
+INSERT INTO aluno (nome_a, nro_matricula, curso) VALUES ('Pedro', '32112DIR397', 'Direito');
+INSERT INTO aluno (nome_a, nro_matricula, curso) VALUES ('Roberta', '32112CCI397', 'Ciencia da computação');
+INSERT INTO aluno (nome_a, nro_matricula, curso) VALUES ('Juliana', '32112ADM397', 'Administração');
 
 --tecnico
-INSERT INTO tecnico (nome, siape, un_adm) VALUES ('Conrado Botelho', '3211TUFU397', 'UNSAN');
-INSERT INTO tecnico (nome, siape, un_adm) VALUES ('Julia', '3212TUFU397', 'UNSAN');
-INSERT INTO tecnico (nome, siape, un_adm) VALUES ('Antonio Carlos', '3213TUFU397', 'UNSAN');
-INSERT INTO tecnico (nome, siape, un_adm) VALUES ('Bruno Vieria', '3214TUFU397', 'EDUCA');
-INSERT INTO tecnico (nome, siape, un_adm) VALUES ('Marcos silva', '3215TUFU397', 'UNUMU');
+INSERT INTO tecnico (nome_t, siape, un_adm) VALUES ('Conrado Botelho', '3211TUFU397', 'UNSAN');
+INSERT INTO tecnico (nome_t, siape, un_adm) VALUES ('Julia', '3212TUFU397', 'UNSAN');
+INSERT INTO tecnico (nome_t, siape, un_adm) VALUES ('Antonio Carlos', '3213TUFU397', 'UNSAN');
+INSERT INTO tecnico (nome_t, siape, un_adm) VALUES ('Bruno Vieria', '3214TUFU397', 'EDUCA');
+INSERT INTO tecnico (nome_t, siape, un_adm) VALUES ('Marcos silva', '3215TUFU397', 'UNUMU');
 
 --professor
-INSERT INTO professor (nome, siape, un_academica, reg_trabalho) VALUES ('Ronaldo', '4648PUFU886', 'FACOM', 'Dedicação exclusiva');
-INSERT INTO professor (nome, siape, un_academica, reg_trabalho) VALUES ('Leila', '4648PUFU887', 'FACOM', '20hs');
-INSERT INTO professor (nome, siape, un_academica, reg_trabalho) VALUES ('Cristina', '4648PUFU888', 'FAMAT', '40hs');
-INSERT INTO professor (nome, siape, un_academica, reg_trabalho) VALUES ('Manuela', '4648PUFU889', 'FAMED', '40hs');
-INSERT INTO professor (nome, siape, un_academica, reg_trabalho) VALUES ('Fabiana', '4648PUFU890', 'FAGEN', 'Dedicação exclusiva');
+INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Ronaldo', '4648PUFU886', 'FACOM', 'Dedicação exclusiva');
+INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Leila', '4648PUFU887', 'FACOM', '20hs');
+INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Cristina', '4648PUFU888', 'FAMAT', '40hs');
+INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Manuela', '4648PUFU889', 'FAMED', '40hs');
+INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Fabiana', '4648PUFU890', 'FAGEN', 'Dedicação exclusiva');
 
 --terceirizado
-INSERT INTO terceirizado (nome, empresa, setor) VALUES ('Luana', 'tanus', 'limpeza');
-INSERT INTO terceirizado (nome, empresa, setor) VALUES ('Bruna', 'core', 'segurança');
-INSERT INTO terceirizado (nome, empresa, setor) VALUES ('Maria', 'nation', 'reparos');
-INSERT INTO terceirizado (nome, empresa, setor) VALUES ('Helena', 'seatle pintura', 'pintura');
-INSERT INTO terceirizado (nome, empresa, setor) VALUES ('Marta', 'orvalho', 'jardinagem');
+INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Luana', 'tanus', 'limpeza');
+INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Bruna', 'core', 'segurança');
+INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Maria', 'nation', 'reparos');
+INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Helena', 'seatle pintura', 'pintura');
+INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Marta', 'orvalho', 'jardinagem');
 
 --unidade academica
 INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FACOM', 'Faculdade de computação', 'Exatas');
@@ -268,11 +276,11 @@ INSERT INTO unidade_administrativa (sigla, nome) VALUES ('UNPON', 'Unidade Ponta
 
 
 --curso
-INSERT INTO curso (sigla, nome, un_acad) VALUES ('BSI', 'Sistemas de informação', 'FACOM');
-INSERT INTO curso (sigla, nome, un_acad) VALUES ('CC', 'Ciencias da Computação', 'FACOM');
-INSERT INTO curso (sigla, nome, un_acad) VALUES ('MAT', 'Matematica', 'FAMAT');
-INSERT INTO curso (sigla, nome, un_acad) VALUES ('CIC', 'Ciências Contábeis', 'FACIC');
-INSERT INTO curso (sigla, nome, un_acad) VALUES ('MED', 'Medicina', 'FAMED');
+INSERT INTO curso (sigla_c, nome_c, un_acad) VALUES ('BSI', 'Sistemas de informação', 'FACOM');
+INSERT INTO curso (sigla_c, nome_c, un_acad) VALUES ('CC', 'Ciencias da Computação', 'FACOM');
+INSERT INTO curso (sigla_c, nome_c, un_acad) VALUES ('MAT', 'Matematica', 'FAMAT');
+INSERT INTO curso (sigla_c, nome_c, un_acad) VALUES ('CIC', 'Ciências Contábeis', 'FACIC');
+INSERT INTO curso (sigla_c, nome_c, un_acad) VALUES ('MED', 'Medicina', 'FAMED');
 
 
 
@@ -316,7 +324,7 @@ ALTER TABLE ONLY professor
 
 --chave primaria curso
 ALTER TABLE ONLY curso
-    ADD CONSTRAINT pkcurso PRIMARY KEY (sigla);      
+    ADD CONSTRAINT pkcurso PRIMARY KEY (sigla_c);      
 
 --chave primaria aluno
 ALTER TABLE ONLY aluno
@@ -375,7 +383,7 @@ ALTER TABLE ONLY resposta
 
 --valor unico para empresa em terceirizado
 ALTER TABLE ONLY terceirizado
-    ADD CONSTRAINT pkterceirizado PRIMARY KEY (nome, empresa, setor);   
+    ADD CONSTRAINT pkterceirizado PRIMARY KEY (nome_te, empresa, setor);   
 
 
 
