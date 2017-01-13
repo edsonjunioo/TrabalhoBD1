@@ -110,7 +110,8 @@ ALTER TABLE tecnico OWNER TO postgres;
 CREATE TABLE terceirizado(
 	nome_te character varying(250) NOT NULL,
 	empresa character varying(20) NOT NULL,
-	setor character varying(20) NOT NULL
+	setor character varying(20) NOT NULL,
+	sigla_ua character(5) NOT NULL
 );
 
 ALTER TABLE terceirizado OWNER TO postgres;	
@@ -253,11 +254,11 @@ INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Manue
 INSERT INTO professor (nome_p, siape, un_academica, reg_trabalho) VALUES ('Fabiana', '4648PUFU890', 'FAGEN', 'Dedicação exclusiva');
 
 --terceirizado
-INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Luana', 'tanus', 'limpeza');
-INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Bruna', 'core', 'segurança');
-INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Maria', 'nation', 'reparos');
-INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Helena', 'seatle pintura', 'pintura');
-INSERT INTO terceirizado (nome_te, empresa, setor) VALUES ('Marta', 'orvalho', 'jardinagem');
+INSERT INTO terceirizado (nome_te, empresa, setor, sigla_ua) VALUES ('Luana', 'tanus', 'limpeza', 'UNSAN');
+INSERT INTO terceirizado (nome_te, empresa, setor, sigla_ua) VALUES ('Bruna', 'core', 'segurança', 'UNSAN' );
+INSERT INTO terceirizado (nome_te, empresa, setor, sigla_ua) VALUES ('Maria', 'nation', 'reparos', 'UNSAN');
+INSERT INTO terceirizado (nome_te, empresa, setor, sigla_ua) VALUES ('Helena', 'seatle pintura', 'pintura', 'UNSAN');
+INSERT INTO terceirizado (nome_te, empresa, setor, sigla_ua) VALUES ('Marta', 'orvalho', 'jardinagem', 'UNSAN');
 
 --unidade academica
 INSERT INTO unidade_acadêmica (sigla, nome, area) VALUES ('FACOM', 'Faculdade de computação', 'Exatas');
@@ -346,7 +347,7 @@ ALTER TABLE ONLY unidade_acadêmica
 
 --chave primaria unidade_administrativa  
 ALTER TABLE ONLY unidade_administrativa
-    ADD CONSTRAINT pkunidade_administrativa PRIMARY KEY (sigla, nome);
+    ADD CONSTRAINT pkunidade_administrativa PRIMARY KEY (sigla);
 
 --chave primaria resposta   
 ALTER TABLE ONLY resposta
@@ -371,9 +372,15 @@ ALTER TABLE ONLY pessoa
 ALTER TABLE ONLY resposta
     ADD CONSTRAINT fkid_resp FOREIGN KEY (id_resp) REFERENCES questao(id_questao);   
 
+
 --chave estrangeira de curso refenciando unidade academica
 ALTER TABLE ONLY curso
     ADD CONSTRAINT fkun_acad FOREIGN KEY (un_acad) REFERENCES unidade_acadêmica(sigla);       
+
+
+--chave estrangeira de terceirizado refenciando unidade administrativa
+ALTER TABLE ONLY terceirizado
+    ADD CONSTRAINT fksigla_ua FOREIGN KEY (sigla_ua) REFERENCES unidade_administrativa(sigla);
 
 
 --chave estrangeira de resposta refenciando formulario    
@@ -381,9 +388,9 @@ ALTER TABLE ONLY resposta
     ADD CONSTRAINT fkid_f FOREIGN KEY (id_f) REFERENCES formulario(id_form)
     ON DELETE CASCADE; 
 
---valor unico para empresa em terceirizado
+--chave estrangeira para empresa em terceirizado
 ALTER TABLE ONLY terceirizado
-    ADD CONSTRAINT pkterceirizado PRIMARY KEY (nome_te, empresa, setor);   
+    ADD CONSTRAINT pkterceirizado PRIMARY KEY (nome_te, empresa, setor, sigla_ua);   
 
 
 
